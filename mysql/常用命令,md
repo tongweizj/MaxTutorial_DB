@@ -1,0 +1,78 @@
+#常用帐号
+
+## 生产环境
+   root/mysqlroot@ttt
+
+## 测试环境 192.168.1.10
+tttadmin/mysqladmin@test
+dba@test mysql@test
+
+
+#常用命令
+
+##倒入新库数据
+use satyr
+source satyr-2012-12-03.sql
+
+use taitaitang
+source taitaitang-2012-12-03.sql
+
+
+
+SELECT * FROM taitaitang.photos_image where image_type = 1 and price = 0;
+UPDATE `taitaitang`.`photos_image` SET `image_type`=0 WHERE image_type = 1 and price = 0;
+
+= PostItem.objects.filter(image=photo)[0].album
+
+
+
+CREATE USER 'dba@yoese'@'localhost' IDENTIFIED BY 'mysql@yoese2012';
+
+GRANT ALL PRIVILEGES ON *.* TO 'dba@yoese'@'localhost' IDENTIFIED BY 'mysql@yoese2012' WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+
+
+CREATE USER 'wtong'@'%' IDENTIFIED BY 'tw273634';
+
+GRANT ALL PRIVILEGES ON *.* TO 'dba@yoese'@'localhost' IDENTIFIED BY 'mysql@yoese2012' WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+
+select * from auth_user  order by last_login desc;
+
+
+
+CREATE USER 'tttadmin'@'localhost' IDENTIFIED BY 'mysqladmin@test';
+
+GRANT ALL PRIVILEGES ON phoenix.* TO 'tttadmin'@'localhost' IDENTIFIED BY 'mysqladmin@test' WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+
+
+GRANT ALL PRIVILEGES ON pinax.* TO 'pinax'@'localhost' IDENTIFIED BY '123456' WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;books_book_author
+
+
+ALTER TABLE `satyr`.`rss_image` ADD COLUMN `local_path` VARCHAR(150) NOT NULL  AFTER `weight` ;VARCHAR(150)
+
+mysql备份
+1.导出整个数据库
+mysqldump -u 用户名 -p 数据库名 > 导出的文件名   
+mysqldump -u wcnc -p smgp_apps_wcnc > wcnc.sql
+
+  mysqldump -udba@satyr -p  satyr > satyr.sql
+  mysql@satyr2012
+2.导出一个表
+mysqldump -u 用户名 -p 数据库名 表名> 导出的文件名
+mysqldump -u root -p ttt auth_user > user.sql
+
+统计
+SELECT count(*) FROM ttt.album_album where count = 0;
+
+
+++++++++
+替换
+++++++++
+
+UPDATE tb1 SET f1=REPLACE(f1, 'abc', 'def'); 
+REPLACE(str,from_str,to_str) 
+
+在字符串 str 中所有出现的字符串 from_str 均被 to_str替换，然后返回这个字符串 
+
+这个函数用来批量替换数据中的非法关键字是很有用的！如下例子： 
+
+UPDATE `wp_posts` SET post_content = REPLACE ( post_content, 'yoese', ‘52sask' ); 
